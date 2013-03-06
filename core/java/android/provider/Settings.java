@@ -2786,55 +2786,6 @@ public final class Settings {
         public static final String MVNO_ROAMING = "mvno_roaming";
 
         /**
-         * Enable Stylus Gestures
-         *
-         * @hide
-         */
-        public static final String ENABLE_STYLUS_GESTURES = "enable_stylus_gestures";
-
-        /**
-         * Left Swipe Action
-         *
-         * @hide
-         */
-        public static final String GESTURES_LEFT_SWIPE = "gestures_left_swipe";
-
-        /**
-         * Right Swipe Action
-         *
-         * @hide
-         */
-        public static final String GESTURES_RIGHT_SWIPE = "gestures_right_swipe";
-
-        /**
-         * Up Swipe Action
-         *
-         * @hide
-         */
-        public static final String GESTURES_UP_SWIPE = "gestures_up_swipe";
-
-        /**
-         * down Swipe Action
-         *
-         * @hide
-         */
-        public static final String GESTURES_DOWN_SWIPE = "gestures_down_swipe";
-
-        /**
-         * Long press Action
-         *
-         * @hide
-         */
-        public static final String GESTURES_LONG_PRESS = "gestures_long_press";
-
-        /**
-         * double tap Action
-         *
-         * @hide
-         */
-        public static final String GESTURES_DOUBLE_TAP = "gestures_double_tap";
-
-        /**
          * Whether to enable quiet hours.
          * @hide
          */
@@ -2996,7 +2947,59 @@ public final class Settings {
          * Whether the lockscreen vibrate should be enabled.
          * @hide
          */
+
         public static final String LOCKSCREEN_VIBRATE_ENABLED = "lockscreen.vibrate_enabled";
+
+        public static final String LOCKSCREEN_CALENDAR_REMINDERS_ONLY = "lockscreen_calendar_reminders_only";
+
+        /**
+         * Enable Stylus Gestures
+         *
+         * @hide
+         */
+        public static final String ENABLE_STYLUS_GESTURES = "enable_stylus_gestures";
+
+        /**
+         * Left Swipe Action
+         *
+         * @hide
+         */
+        public static final String GESTURES_LEFT_SWIPE = "gestures_left_swipe";
+
+        /**
+         * Right Swipe Action
+         *
+         * @hide
+         */
+        public static final String GESTURES_RIGHT_SWIPE = "gestures_right_swipe";
+
+        /**
+         * Up Swipe Action
+         *
+         * @hide
+         */
+        public static final String GESTURES_UP_SWIPE = "gestures_up_swipe";
+
+        /**
+         * down Swipe Action
+         *
+         * @hide
+         */
+        public static final String GESTURES_DOWN_SWIPE = "gestures_down_swipe";
+
+        /**
+         * Long press Action
+         *
+         * @hide
+         */
+        public static final String GESTURES_LONG_PRESS = "gestures_long_press";
+
+        /**
+         * double tap Action
+         *
+         * @hide
+         */
+        public static final String GESTURES_DOUBLE_TAP = "gestures_double_tap";
 
         /**
          * Show the pending notification counts as overlays on the status bar
