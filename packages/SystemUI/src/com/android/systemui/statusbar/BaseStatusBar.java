@@ -28,7 +28,10 @@ import com.android.systemui.SystemUI;
 import com.android.systemui.recent.RecentTasksLoader;
 import com.android.systemui.recent.RecentsActivity;
 import com.android.systemui.recent.TaskDescription;
+import com.android.systemui.statusbar.pie.PieLayout;
 import com.android.systemui.statusbar.policy.NotificationRowLayout;
+import com.android.systemui.statusbar.policy.PieController;
+import com.android.systemui.statusbar.policy.PieController.Position;
 import com.android.systemui.statusbar.tablet.StatusBarPanel;
 
 import android.app.ActivityManager;
@@ -39,9 +42,11 @@ import android.app.PendingIntent;
 import android.app.TaskStackBuilder;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Configuration;
@@ -49,6 +54,7 @@ import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Build;
@@ -86,6 +92,7 @@ public abstract class BaseStatusBar extends SystemUI implements
         CommandQueue.Callbacks {
     public static final String TAG = "StatusBar";
     public static final boolean DEBUG = false;
+    public static final boolean DEBUG_INPUT = false;
     public static final boolean MULTIUSER_DEBUG = false;
 
     protected static final int MSG_TOGGLE_RECENTS_PANEL = 1020;
@@ -154,8 +161,6 @@ public abstract class BaseStatusBar extends SystemUI implements
     private ArrayList<NavigationBarCallback> mNavigationCallbacks =
             new ArrayList<NavigationBarCallback>();
 
-<<<<<<< HEAD
-=======
     // Pie Control
     protected PieController mPieController;
     protected PieLayout mPieContainer;
@@ -244,7 +249,6 @@ public abstract class BaseStatusBar extends SystemUI implements
 
     };
 
->>>>>>> da062dc... Add pie control optimizations for Phone UI.
     // UI-specific methods
 
     /**
@@ -401,7 +405,19 @@ public abstract class BaseStatusBar extends SystemUI implements
                     if (true) Slog.v(TAG, "userId " + mCurrentUserId + " is in the house");
                     userSwitched(mCurrentUserId);
                 }
-            }}, filter);
+            }
+        }, filter);
+
+        mPieController = new PieController(mContext);
+        mPieController.attachTo(this);
+        addNavigationBarCallback(mPieController);
+
+        mSettingsObserver = new PieSettingsObserver(new Handler());
+
+        // this calls attachPie() implicitly
+        mSettingsObserver.onChange(true);
+
+        mSettingsObserver.observe();
     }
 
     public void userSwitched(int newUserId) {
@@ -1315,8 +1331,6 @@ public abstract class BaseStatusBar extends SystemUI implements
             callback.setDisabledFlags(disabledFlags);
         }
     }
-<<<<<<< HEAD
-=======
 
     // Pie Controls
 
@@ -1475,5 +1489,4 @@ public abstract class BaseStatusBar extends SystemUI implements
         return lp;
     }
 
->>>>>>> da062dc... Add pie control optimizations for Phone UI.
 }
