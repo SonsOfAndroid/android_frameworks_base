@@ -112,8 +112,6 @@ import com.android.internal.widget.ActionBarContainer;
 import com.android.internal.widget.ActionBarContextView;
 import com.android.internal.widget.ActionBarView;
 
-import com.android.internal.statusbar.IStatusBarService;
-
 /**
  * Android-specific Window.
  * <p>
@@ -1957,8 +1955,8 @@ public class PhoneWindow extends Window implements MenuBuilder.Callback {
             private final static int SWIPE_RIGHT = 4;
             private final static int PRESS_LONG = 5;
             private final static int TAP_DOUBLE = 6;
-            private final static double SWIPE_MIN_DISTANCE = 25.0;
-            private final static double SWIPE_MIN_VELOCITY = 50.0;
+            private final static int SWIPE_MIN_DISTANCE = 50;
+            private final static int SWIPE_MIN_VELOCITY = 100;
             private final static int KEY_NO_ACTION = 1000;
             private final static int KEY_HOME = 1001;
             private final static int KEY_BACK = 1002;
